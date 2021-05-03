@@ -25,7 +25,8 @@ CFLAGS+=-I../include/ -g -O2 -Wall -Wextra -Werror -pie -fPIC \
 		`pkg-config --cflags libconfig` \
 		`pkg-config --cflags libnotify` \
 		`pkg-config --cflags libpng` \
-		`pkg-config --cflags $(VCHAN_PKG)`
+		`pkg-config --cflags $(VCHAN_PKG)` \
+		`pkg-config --cflags gtk+-3.0`
 OBJS=xside.o png.o trayicon.o ../gui-common/double-buffer.o ../gui-common/txrx-vchan.o \
 	../gui-common/error.o ../common/list.o
 
@@ -36,7 +37,8 @@ qubes-guid: $(OBJS)
 		`pkg-config --libs $(VCHAN_PKG)` \
 		`pkg-config --libs libpng` \
 		`pkg-config --libs libconfig` \
-		`pkg-config --libs libnotify`
+		`pkg-config --libs libnotify` \
+        `pkg-config --libs gtk+-3.0`
 
 qubes-guid.1: qubes-guid
 	LC_ALL=C help2man --version-string=`cat ../version` --no-info --name="Qubes GUI daemon" ./qubes-guid  > qubes-guid.1
